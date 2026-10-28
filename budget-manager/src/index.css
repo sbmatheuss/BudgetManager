@@ -1,0 +1,75 @@
+@import "tailwindcss";
+
+/* Paleta "livro-razão": fundo cinza, pauta, tinta e o verde da contabilidade */
+@theme {
+  --color-papel: #e9ebea;
+  --color-pauta: #c3cbc5;
+  --color-tinta: #1d2b23;
+  --color-lapis: #5c6b61;
+  --color-razao: #1f6b4f;
+  --color-razao-escuro: #185840;
+  --color-razao-claro: #d3e6da;
+  --color-alerta: #fab219;
+  --color-alerta-claro: #fdecc4;
+  --color-estouro: #d03b3b;
+  --color-estouro-claro: #f6d4d4;
+  --color-estouro-texto: #a12f2f;
+
+  --animate-encher: encher 900ms cubic-bezier(0.2, 0.7, 0.2, 1);
+  --animate-entrar: entrar 1200ms ease-out;
+  --animate-sair: sair 200ms ease-in forwards;
+  --animate-aparecer: aparecer 180ms ease-out;
+
+  /* A barra do orçamento enche ao abrir a página */
+  @keyframes encher {
+    from {
+      transform: scaleX(0);
+    }
+  }
+
+  /* Linha nova desliza e fica marcada em verde por um instante */
+  @keyframes entrar {
+    0% {
+      opacity: 0;
+      transform: translateY(-6px);
+      background-color: var(--color-razao-claro);
+    }
+    25% {
+      opacity: 1;
+      transform: none;
+      background-color: var(--color-razao-claro);
+    }
+    100% {
+      background-color: transparent;
+    }
+  }
+
+  @keyframes sair {
+    to {
+      opacity: 0;
+      transform: translateX(12px);
+    }
+  }
+
+  @keyframes aparecer {
+    from {
+      opacity: 0;
+      transform: translateY(2px);
+    }
+  }
+}
+
+body {
+  background-color: var(--color-papel);
+  color: var(--color-tinta);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  ::before,
+  ::after {
+    animation-duration: 1ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 1ms !important;
+  }
+}
